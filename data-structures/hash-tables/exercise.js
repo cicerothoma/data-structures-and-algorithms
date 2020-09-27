@@ -32,22 +32,19 @@ class HashTable {
   get(key) {
     const address = this._hash(key);
     const currentBucket = this.data[address];
-    let data = null;
-    if (currentBucket.length > 1) {
+    if (currentBucket) {
       for (let i = 0; i < currentBucket.length; i++) {
         if (currentBucket[i][0] === key) {
-          data = currentBucket[i];
-          break;
+          return currentBucket[i][1];
         }
       }
-      return data[1];
-    } else {
-      return currentBucket[0][1];
     }
+
+    return undefined;
   }
 }
 
-const myHashTable = new HashTable(1);
+const myHashTable = new HashTable(2);
 myHashTable.set('grapes', 10000);
 myHashTable.set('watermelon', 1000);
 myHashTable.set('orange', 50);
@@ -56,9 +53,9 @@ myHashTable.set('avocado', 100);
 myHashTable.set('apple', 70);
 myHashTable.set('cucumber', 10);
 myHashTable.set('pawpaw', 20);
-console.log(myHashTable.data);
-// console.log(myHashTable.get('watermelon'));
-// console.log(myHashTable.get('grapes'));
-// console.log(myHashTable.get('orange'));
+console.log(myHashTable.get('watermelon'));
+console.log(myHashTable.get('grapes'));
+console.log(myHashTable.get('orange'));
 console.log(myHashTable.get('pawpaw'));
 console.log(myHashTable.get('avocado'));
+console.log(myHashTable.data);
