@@ -11,6 +11,7 @@
 
 // Create a method that adds value to the end of the linked list created below
 // Create a method that adds value at the beginning of the linked list created below
+// Create a method that inserts a node at the specified index
 
 class Node {
   constructor(value) {
@@ -56,6 +57,21 @@ class LinkedList {
 
     return this;
   }
+
+  printList() {
+    const array = [];
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      array.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    console.log(array);
+  }
+
+  insert(index, value) {
+    //   while() {
+    //   }
+  }
 }
 
 const myLinkedList = new LinkedList(10);
@@ -65,3 +81,4 @@ console.log(myLinkedList.prepend(1));
 console.log(myLinkedList.prepend(20));
 
 // console.log(myLinkedList);
+myLinkedList.printList();
