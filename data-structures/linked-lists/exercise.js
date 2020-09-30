@@ -164,6 +164,19 @@ class DoublyLinkedList {
     return this;
   }
 
+  traverseToIndex(index) {
+    let currentNode = this.head;
+    let counter = 0;
+    if (index === 0) {
+      return this.head;
+    }
+    while (counter < index) {
+      currentNode = currentNode.next;
+      counter += 1;
+    }
+    return currentNode;
+  }
+
   printList() {
     const nodeArray = [];
     let currentNode = this.head;
