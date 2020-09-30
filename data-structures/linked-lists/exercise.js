@@ -178,6 +178,15 @@ class DoublyLinkedList {
   }
 
   insert(index, value) {
+    //   CHECK PARAMS
+    if (index === 0) {
+      this.prepend(value);
+      return this;
+    } else if (index >= this.length) {
+      this.append(value);
+      return this;
+    }
+
     // Create new node
     const newNode = new DoublyNode(value);
     // Get The Leading Node
@@ -197,6 +206,30 @@ class DoublyLinkedList {
 
     return this;
   }
+
+  remove(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+      this.head.prev = null;
+      return this;
+    }
+    if (index < this.length) {
+      // Get the leading node
+      let leader = this.traverseToIndex(index - 1);
+      // Get the unwanted node
+      let unwantedNode = leader.next;
+      // Get the following node
+      let followingNode = unwantedNode.next;
+      // Point leading node next value to the following node
+      leader.next = followingNode;
+      // Point the following node previous value to the leader
+      followingNode.prev = leader;
+      // Decrease length
+      this.length -= 1;
+      return this;
+    }
+  }
+
   printList() {
     const nodeArray = [];
     let currentNode = this.head;
@@ -214,5 +247,6 @@ const myDoublyLinkedList = new DoublyLinkedList(8);
 myDoublyLinkedList.append(1);
 myDoublyLinkedList.prepend(0);
 myDoublyLinkedList.insert(2, 'LOL');
-console.log(myDoublyLinkedList.head.next.next);
+console.log('removed', myDoublyLinkedList.remove(1));
+console.log(myDoublyLinkedList.head.next);
 myDoublyLinkedList.printList();
