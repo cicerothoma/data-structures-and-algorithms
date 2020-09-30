@@ -105,17 +105,34 @@ class LinkedList {
     }
     console.log(nodeArray);
   }
+
+  reverse() {
+    //   CHECK PARAM
+    if (this.length === 1) {
+      return this.head;
+    }
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+    return this;
+  }
 }
 
-// const myLinkedList = new LinkedList(10);
-// myLinkedList.append(5);
-// myLinkedList.append(16);
-// myLinkedList.prepend(0);
-// myLinkedList.printList();
-// console.log(myLinkedList.traverseToIndex(3));
-// myLinkedList.insert(2, 50);
-// myLinkedList.remove(0);
-// myLinkedList.printList();
+const myLinkedList = new LinkedList(10);
+myLinkedList.append(5);
+myLinkedList.append(16);
+myLinkedList.prepend(0);
+myLinkedList.insert(2, 50);
+myLinkedList.printList();
+console.log(myLinkedList.reverse());
 
 // Convert the singly linked list above to a doubly linked list
 
@@ -243,10 +260,10 @@ class DoublyLinkedList {
   }
 }
 
-const myDoublyLinkedList = new DoublyLinkedList(8);
-myDoublyLinkedList.append(1);
-myDoublyLinkedList.prepend(0);
-myDoublyLinkedList.insert(2, 'LOL');
-console.log('removed', myDoublyLinkedList.remove(1));
-console.log(myDoublyLinkedList.head.next);
-myDoublyLinkedList.printList();
+// const myDoublyLinkedList = new DoublyLinkedList(8);
+// myDoublyLinkedList.append(1);
+// myDoublyLinkedList.prepend(0);
+// myDoublyLinkedList.insert(2, 'LOL');
+// console.log('removed', myDoublyLinkedList.remove(1));
+// console.log(myDoublyLinkedList.head.next);
+// myDoublyLinkedList.printList();
