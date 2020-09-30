@@ -177,6 +177,26 @@ class DoublyLinkedList {
     return currentNode;
   }
 
+  insert(index, value) {
+    // Create new node
+    const newNode = new DoublyNode(value);
+    // Get The Leading Node
+    const leader = this.traverseToIndex(index - 1);
+    // Get the node after the leader
+    const followingNode = leader.next;
+    // Insert new node (this breaks the link)
+    leader.next = newNode;
+    // point the new node next value to equal the node after the leader
+    newNode.next = followingNode;
+    // Change the following node previous value to equal new node
+    followingNode.prev = newNode;
+    // Change the new node previous value to equal leading node
+    newNode.prev = leader;
+    // Increase length
+    this.length += 1;
+
+    return this;
+  }
   printList() {
     const nodeArray = [];
     let currentNode = this.head;
@@ -193,5 +213,6 @@ class DoublyLinkedList {
 const myDoublyLinkedList = new DoublyLinkedList(8);
 myDoublyLinkedList.append(1);
 myDoublyLinkedList.prepend(0);
-console.log(myDoublyLinkedList.head.next);
+myDoublyLinkedList.insert(2, 'LOL');
+console.log(myDoublyLinkedList.head.next.next);
 myDoublyLinkedList.printList();
