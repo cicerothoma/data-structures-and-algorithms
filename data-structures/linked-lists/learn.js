@@ -137,19 +137,47 @@ class LinkedList {
     this.length -= 1;
     return this.printList();
   }
+
+  reverse() {
+    if (this.length === 1) {
+      return this;
+    }
+    // Get Reference To The First And Second Node
+    let first = this.head;
+    // Set the tail to equal to the head
+    this.tail = this.head;
+    let second = first.next;
+    while (second) {
+      // Create a temporary variable that holds the third node
+      const temp = second.next;
+
+      second.next = first;
+      console.log('pointer to the 3rd node', second.next);
+
+      first = second;
+
+      console.log('new first node', first);
+
+      second = temp;
+      console.log('new second node', second);
+    }
+
+    this.head.next = null;
+    this.head = first;
+
+    return this.printList();
+  }
 }
 
 const myLinkedList = new LinkedList(10);
-// console.log(myLinkedList.append(5));
-// console.log(myLinkedList.append(16));
-// console.log(myLinkedList.prepend(1));
-// console.log(myLinkedList.prepend(20));
-// console.log(myLinkedList.insert(200, 99));
-// console.log(myLinkedList.insert(0, 99));
-// console.log(myLinkedList.insert(2, 'will it work?'));
-// console.log(myLinkedList.remove(2));
-// console.log(myLinkedList.remove(0));
-// console.log(myLinkedList.remove(0));
+console.log(myLinkedList.append(5));
+console.log(myLinkedList.append(16));
+console.log(myLinkedList.prepend(1));
+console.log(myLinkedList.prepend(20));
+console.log(myLinkedList.insert(200, 99));
+console.log(myLinkedList.insert(0, 99));
+myLinkedList.printList();
+myLinkedList.reverse();
 
 // DOUBLY LINKED LIST
 
@@ -247,12 +275,12 @@ class DoublyLinkedList {
 }
 
 const myDoublyLinkedList = new DoublyLinkedList(1);
-myDoublyLinkedList.append(2);
-myDoublyLinkedList.append(3);
-myDoublyLinkedList.prepend(0);
-myDoublyLinkedList.insert(1, 99);
-myDoublyLinkedList.insert(3, 'lets see');
-myDoublyLinkedList.remove(3);
+// myDoublyLinkedList.append(2);
+// myDoublyLinkedList.append(3);
+// myDoublyLinkedList.prepend(0);
+// myDoublyLinkedList.insert(1, 99);
+// myDoublyLinkedList.insert(3, 'lets see');
+// myDoublyLinkedList.remove(3);
 // console.log(myLinkedList);
 // myLinkedList.printList();
-console.log(myDoublyLinkedList.head.next.next.next);
+// console.log(myDoublyLinkedList.head.next.next.next);
