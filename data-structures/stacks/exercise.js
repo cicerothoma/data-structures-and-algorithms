@@ -3,23 +3,20 @@
 class Stack {
   constructor() {
     this.data = [];
-    this.length = 0;
   }
 
   push(value) {
-    this.length += 1;
     this.data.push(value);
     return this;
   }
 
   pop() {
     this.data.pop();
-    this.length -= 1;
     return this;
   }
 
   peek() {
-    return this.data[0];
+    return this.data[this.data.length - 1];
   }
 
   isEmpty() {
@@ -31,13 +28,13 @@ class Stack {
   }
 }
 
-// const myStack = new Stack();
-// myStack.push(1);
-// myStack.push(2);
-// myStack.push(3);
-// myStack.pop();
-// console.log(myStack.peek());
-// console.log(myStack);
+const myStack = new Stack();
+myStack.push(1);
+myStack.push(2);
+myStack.push(3);
+myStack.pop();
+console.log(myStack.peek());
+console.log(myStack);
 
 // Create Another Stack Data Structure Using Linked List
 
@@ -103,12 +100,12 @@ class Stack2 {
   }
 }
 
-const myStack2 = new Stack2();
-myStack2.push(1);
-myStack2.push(2);
-myStack2.push(3);
-myStack2.pop();
-myStack2.pop();
-myStack2.pop();
-console.log(myStack2.peek());
-console.log(myStack2);
+// const myStack2 = new Stack2();
+// myStack2.push(1);
+// myStack2.push(2);
+// myStack2.push(3);
+// myStack2.pop();
+// myStack2.pop();
+// myStack2.pop();
+// console.log(myStack2.peek());
+// console.log(myStack2);
