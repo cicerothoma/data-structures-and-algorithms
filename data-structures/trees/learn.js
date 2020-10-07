@@ -1,3 +1,10 @@
+/**
+ * Big O Notation --- Trees
+ * Insert --- O(log n)
+ * Remove --- O(log n)
+ * lookup --- O(log n)
+ */
+
 // Coding our own binary search tree
 class BSTNode {
   constructor(value) {
